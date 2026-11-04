@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AXIOM / Anuraksana Predictive Maintenance Portal
 
 Anuraksana is a local predictive-maintenance portal using NASA C-MAPSS FD001 simulated turbofan readings and a trained Random Forest remaining-useful-life model.
@@ -88,3 +89,7 @@ For Telegram setup, follow `TELEGRAM_SETUP.md` and use `backend/telegram.example
 The optional **AI Agent Hub** link and `Launch-AI-Agent.cmd` refer to a separate local project on port 8990. That project's source is outside this repository and is not required for the FD001 portal. Configure it separately if you want to use that integration.
 
 See `USER_GUIDE.md` for the latest workflow. Older verification reports describe earlier versions; browser end-to-end test selectors may need updates after UI changes.
+=======
+# Predictive-Maintenance-Software-only-DEVIATHON-
+This Repo is only for software which i make on NASA Dataset for predictive maintainance
+>>>>>>> f47366c9c923f60c61e3f71bbb50ddc1049eced3
