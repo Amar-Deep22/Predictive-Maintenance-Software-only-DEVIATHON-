@@ -1,0 +1,80 @@
+{
+  "test": {
+    "count": 100,
+    "mae": 14.35875237298665,
+    "rmse": 19.520939530901423,
+    "mean_signed_error": 10.1996273211781,
+    "near_failure_count": 25,
+    "near_failure_mae": 3.621628732611249,
+    "alert_count": 22,
+    "alert_precision": 0.9545454545454546,
+    "alert_recall": 0.84
+  },
+  "baseline_test": {
+    "count": 100,
+    "mae": 35.92,
+    "rmse": 43.38916915544708,
+    "mean_signed_error": 12.48,
+    "near_failure_count": 25,
+    "near_failure_mae": 70.28,
+    "alert_count": 0,
+    "alert_precision": null,
+    "alert_recall": 0.0
+  },
+  "validation": {
+    "count": 100,
+    "mae": 15.999703702098081,
+    "rmse": 22.764936858313124,
+    "mean_signed_error": 3.654546828164075,
+    "near_failure_count": 17,
+    "near_failure_mae": 3.868082780204938,
+    "alert_count": 15,
+    "alert_precision": 0.9333333333333333,
+    "alert_recall": 0.8235294117647058
+  },
+  "baseline_validation": {
+    "count": 100,
+    "mae": 45.58,
+    "rmse": 54.65510040243271,
+    "mean_signed_error": 4.18,
+    "near_failure_count": 17,
+    "near_failure_mae": 73.3529411764706,
+    "alert_count": 0,
+    "alert_precision": null,
+    "alert_recall": 0.0
+  },
+  "candidates": [
+    {
+      "max_depth": 15,
+      "min_samples_leaf": 5,
+      "metrics": {
+        "count": 100,
+        "mae": 15.999703702098081,
+        "rmse": 22.764936858313124,
+        "mean_signed_error": 3.654546828164075,
+        "near_failure_count": 17,
+        "near_failure_mae": 3.868082780204938,
+        "alert_count": 15,
+        "alert_precision": 0.9333333333333333,
+        "alert_recall": 0.8235294117647058
+      }
+    },
+    {
+      "max_depth": null,
+      "min_samples_leaf": 3,
+      "metrics": {
+        "count": 100,
+        "mae": 16.08687215986398,
+        "rmse": 22.951321366814877,
+        "mean_signed_error": 3.944031669400996,
+        "near_failure_count": 17,
+        "near_failure_mae": 3.8859700255033025,
+        "alert_count": 15,
+        "alert_precision": 0.9333333333333333,
+        "alert_recall": 0.8235294117647058
+      }
+    }
+  ],
+  "evaluation": "Official FD001 test: one final observation per engine, 100 engines. Uncapped RUL in cycles. Test used only after selection.",
+  "validation_protocol": "80/20 engine split; five seeded pre-failure cutoffs per validation engine; equal observations per engine."
+}

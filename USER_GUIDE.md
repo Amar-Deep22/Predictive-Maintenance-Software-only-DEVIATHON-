@@ -1,0 +1,33 @@
+# Unified FD001 portal guide
+
+All active maintenance pages use the same selected FD001 engine and model predictions. Manual threshold controls have been removed from navigation. Original simulator source and historical simulation orders remain on disk.
+
+1. Machines: view Top 4 or Top 5, then Inspect an engine.
+2. 3D Digital Twin: inspect the same engine RUL and priority. Use camera presets, orbit, Cutaway and Pause visual motion.
+3. Sensor Trends: view recorded NASA readings and prediction history for the selected engine. Changing the chart sensor does not change the model input feature set.
+4. Sensor Replay: select engine 1-100, start a session, then advance up to 30 cycles. The first prediction requires 30 cycles. Each advance runs the trained model. Switch to 3D to see the same replay prediction and status. Replay advances manually, not in real time.
+5. Fault Alerts: current predictions with RUL <=30 cycles. These are predictive urgency flags, not confirmed faults or an event log.
+6. Draft work orders from engine details. Maintenance Reports saves and updates them permanently in SQLite.
+7. Model Evaluation: inspect official test metrics and download evaluation CSV.
+
+## 3D interpretation
+The existing motor geometry is an illustrative proxy for an FD001 turbofan engine. Casing colour reflects model-derived urgency: Critical red; High/Medium amber; Low teal; Pending grey. It is not a diagnosed casing fault. Shaft rotation is decorative and slowed, not measured RPM or ML-predicted physics. No motor current, temperature, load or vibration is inferred. Pause affects presentation only. Bearing/terminal colours no longer respond to synthetic threshold inputs in the active portal.
+
+## Model boundaries
+Random Forest estimates engine RUL from a 30-cycle sensor window. Priority is a policy applied to that ML output: Critical <=15, High <=30, Medium <=60, Low >60 cycles. Risk is an urgency index, not failure probability. HPC focus is FD001's known degradation scenario, not learned component diagnosis. RUL is engine-level, not individual bearing life. Charts, rendering, navigation and database storage are conventional software. No live ESP32 hardware is connected.
+
+## Storage
+backend/artifacts holds the trained model. backend/data/portal.sqlite3 stores work orders and replay sessions. Old simulation orders are preserved but not mixed into active FD001 reports. Start the portal using python run.py and visit http://127.0.0.1:8767/.
+
+
+## Interactive model controls
+The portal opens on Sensor Replay. Choose engine 1–100 and click Start engine and run model: this creates a new session and runs the trained model on the first 30 recorded cycles. Select 1, 10 or 30 Cycles per click, then Feed next readings and predict. Each click advances the dataset cursor, recomputes inference, and shows the processed cycles, latest 30-cycle input window, previous/new RUL and completion time. View result in 3D opens the same session. Controls are disabled during requests and at the recording end. No background playback or retraining occurs. Reference fleet rows remain precomputed evaluation results. Changes in predicted RUL are data-driven and need not decrease monotonically.
+
+## Automatic demo rotation
+Start automatic replay now defaults to rotation through reference engines with model-predicted endpoint RUL of 15 cycles or less. The next engine is shown before starting; selection advances after successful session creation and is remembered in this browser. The list wraps after the last candidate. Switch off rotation to choose an engine manually. Replay still computes fresh sensor-window predictions; it never forces a Critical result. Existing High/Critical Telegram notification rules and per-session deduplication remain in place.
+
+## Interactive inspection and Telegram responses
+In 3D Digital Twin, click a part or use the Component dropdown. The panel shows related FD001 sensor trends and honest inspection guidance. Bearings and gearbox have no dedicated FD001 readings. Whole-engine RUL is not a component lifetime.
+New High/Critical Telegram alerts now create a linked draft work order and contain Acknowledge and Start inspection buttons. Existing old messages do not gain buttons. All three configured workers may acknowledge; each response is recorded with worker ID and UTC timestamp (displayed in local time).
+A manager must approve the draft in Work orders before inspection can start. Leave Assignee blank so the first worker pressing Start inspection claims it, or assign the exact configured worker ID. Starting changes Approved to In progress. Another worker cannot take over an assigned task. Closed tasks cannot be reopened from Telegram. Record findings in Notes and complete the task in the portal.
+The portal must remain running and online for Telegram responses. It polls Telegram locally; no public URL is required. Only one portal process should run this bot. Work orders refresh every five seconds while not editing; unsaved edits are protected by a timestamp conflict check. Do not run telegram_setup.py while the response listener is active.

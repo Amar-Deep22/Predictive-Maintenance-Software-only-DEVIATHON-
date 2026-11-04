@@ -1,0 +1,60 @@
+{
+  "session": "FD001:replay:034:023460fe",
+  "steps": [
+    {
+      "cycle": 30,
+      "rul": 155.3965478146322,
+      "priority": "Low"
+    },
+    {
+      "cycle": 60,
+      "rul": 153.87044851244886,
+      "priority": "Low"
+    },
+    {
+      "cycle": 90,
+      "rul": 150.32804805819566,
+      "priority": "Low"
+    },
+    {
+      "cycle": 120,
+      "rul": 104.36388769866579,
+      "priority": "Low"
+    },
+    {
+      "cycle": 150,
+      "rul": 62.402293764901444,
+      "priority": "Low"
+    },
+    {
+      "cycle": 180,
+      "rul": 42.39974249233893,
+      "priority": "Medium"
+    },
+    {
+      "cycle": 203,
+      "rul": 6.944597734316667,
+      "priority": "Critical"
+    }
+  ],
+  "work_order": "WO-5BB4C9F8",
+  "work_order_verified_in_sqlite": true,
+  "history_points": 203,
+  "telegram": [
+    {
+      "worker": "WORKER-3",
+      "band": "Critical",
+      "status": "sent"
+    },
+    {
+      "worker": "WORKER-1",
+      "band": "Critical",
+      "status": "sent"
+    },
+    {
+      "worker": "WORKER-2",
+      "band": "Critical",
+      "status": "sent"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "enabled": false,
+  "bot_token": "",
+  "workers": [
+    {
+      "worker_id": "WORKER-01",
+      "chat_id": ""
+    },
+    {
+      "worker_id": "WORKER-02",
+      "chat_id": ""
+    },
+    {
+      "worker_id": "WORKER-03",
+      "chat_id": ""
+    }
+  ]
+}
